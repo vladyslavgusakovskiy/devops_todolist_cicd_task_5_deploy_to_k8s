@@ -123,6 +123,7 @@ jobs:
     name: Deploy Helm
     needs: [docker-ci, helm-ci]
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
     - uses: actions/download-artifact@v4
@@ -132,3 +133,15 @@ jobs:
 
     - name: Set Up Helm
       uses: azure/setup-helm@v4.2.0
+
+    - name: Set up Kubectl
+      uses: azure/setup-kubectl@v4
+
+    - uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - uses: azure/aks-set-context@v3
+      with:
+        cluster-name: ${{ vars.AZURE_CLUSTER_NAME }}
+        resource-group: ${{ vars.AZURE_RESOURCE_GROUP }}

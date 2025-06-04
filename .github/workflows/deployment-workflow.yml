@@ -15,7 +15,7 @@ on:
      helm-values-path:
        description: 'Path to the helm values file'
        type: string
-       default: './todoapp/values.'
+       default: './todoapp/values.yaml'
 
 jobs:
     deploy-helm:

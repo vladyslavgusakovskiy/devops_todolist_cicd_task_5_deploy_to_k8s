@@ -52,6 +52,18 @@ jobs:
           cluster-name: ${{ vars.AZURE_CLUSTER_NAME }}
           resource-group: ${{ vars.AZURE_RESOURCE_GROUP }}
 
+      - name: Cleanup stale Helm release if needed
+        run: |
+          echo "Checking current release status..."
+          helm status ${{ inputs.helm-release-name }} -n ${{ inputs.environment }} || true
+
+          echo "Force uninstall if previous upgrade failed or stuck..."
+          helm uninstall ${{ inputs.helm-release-name }} -n ${{ inputs.environment }} || true
+
+          echo "Remove any leftover Helm secrets (if needed)..."
+          kubectl delete secret -n ${{ inputs.environment }} -l "owner=helm,name=${{ inputs.helm-release-name }}" || true
+
+
       - name: Helm Dry Run
         run: |
           helm upgrade --install --dry-run --debug ${{ inputs.helm-release-name }} ./todoapp-*.tgz \

@@ -38,3 +38,7 @@ todoapp:
       capacity: "1Gi"
     persistentVolumeClaim:
       requestStorage: "1Gi"
+
+    service:
+    type: NodePort
+    nodePort: 30007

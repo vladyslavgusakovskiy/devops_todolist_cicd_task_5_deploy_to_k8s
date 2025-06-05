@@ -3,6 +3,9 @@ todoapp:
   image:
     repository: ikulyk404/todoapp
 
+mysql:
+  namespace: mysql-staging
+
   resources:
     requests:
       memory: "256Mi"
@@ -24,6 +27,3 @@ todoapp:
       capacity: "1Gi"
     persistentVolumeClaim:
       requestStorage: "1Gi"
-
-mysql:
-  namespace: mysql-staging

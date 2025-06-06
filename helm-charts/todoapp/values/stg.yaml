@@ -3,6 +3,10 @@ todoapp:
   image:
     repository: ikulyk404/todoapp
 
+  service:
+    type: NodePort
+    nodePort: 30008
+
 mysql:
   namespace: mysql-staging
 

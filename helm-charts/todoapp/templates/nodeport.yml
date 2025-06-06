@@ -11,6 +11,4 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 8080
-    {{- if .Values.todoapp.nodePort }}
-    nodePort: {{ .Values.todoapp.service.nodePort }}
-    {{- end }}
+    nodePort: 30007

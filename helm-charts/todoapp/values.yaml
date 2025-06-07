@@ -6,6 +6,7 @@ mysql:
 
 todoapp:
   namespace: todoapp
+  nodePort: 30007
   image:
     repository: ikulyk404/todoapp
     tag: "4.0.1"

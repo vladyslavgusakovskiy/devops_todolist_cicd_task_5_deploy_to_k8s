@@ -30,9 +30,9 @@ todoapp:
     minReplicas: 2
     maxReplicas: 5
     cpu:
-      averageUtilization: 70
+      avarageUtilization: 70
     memory:
-      averageUtilization: 70
+      avarageUtilization: 70
 
   volumes:
     persistentVolume:

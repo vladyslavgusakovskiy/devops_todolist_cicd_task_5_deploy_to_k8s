@@ -1,5 +1,6 @@
 todoapp:
   namespace: todoapp-staging
+  nodePort: 30008
   image:
     repository: ikulyk404/todoapp
 

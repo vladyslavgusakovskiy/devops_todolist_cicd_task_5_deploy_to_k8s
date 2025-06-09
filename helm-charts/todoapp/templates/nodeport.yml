@@ -8,9 +8,9 @@ spec:
   selector:
     app: todoapp
   ports:
-  - protocol: TCP
+    - protocol: TCP
     port: 80
     targetPort: 8080
     {{- if .Values.todoapp.nodePort }}
-      nodePort: {{ .Values.todoapp.nodePort }}
+    nodePort: {{ .Values.todoapp.nodePort }}
     {{- end }}
